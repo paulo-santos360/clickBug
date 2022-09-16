@@ -26,7 +26,7 @@ const posicElemento = (el) => {
     let posX = Math.floor(Math.random()*1000)
     let posY = Math.floor(Math.random()*400)
     el.style.position = 'absolute'
-    el.style.left = posX+'px'
+    el.style.left = -posX+'px'
     el.style.top = posY+'px'
 
 }
@@ -46,8 +46,15 @@ const moveElemento = (el, veloc, inc)=> {
 
         veloc = veloc + inc
         el.style.left = veloc +'px'
+        //verifica se o elemento saiu do quadro e possui a
+        //classe emtela
+        //remove a classe e volta para uma posição inicial
 
-    }, 50);
+        if(veloc > larguraQuadro && el.classList.cont('emtela')){
+            el.classList.remove('emtela')
+            posicElemento(el)
+        }
+    }, 40);
 }
 
 
@@ -62,7 +69,7 @@ const moveElemento = (el, veloc, inc)=> {
 
 for(inv of invasores){
     posicElemento(inv)
-
+    moveElemento(inv, Math.random()*10, Math.random()*19+1)
 }
 
 
