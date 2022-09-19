@@ -43,7 +43,6 @@ const moveElemento = (el, veloc, inc)=> {
 
     //executa a cada x milessegundos
     const anima = setInterval(()=>{
-
         veloc = veloc + inc
         el.style.left = veloc +'px'
         //verifica se o elemento saiu do quadro 
@@ -73,6 +72,10 @@ const clickBug = (el)=>{
     el.classList.add('morto')
     //Adiciona 10 pts ao score
     score += 10
+    //SE O INSETO CLICADO FOR BPNZINHO PERDE 50 PONTOS
+    if(el.classList.contains('bonzinhos')){
+        score -= 60
+    }
     document.getElementById('score').innerText = score
 
     //Se velocidade for maior que 20, faz 100 pontos
@@ -108,6 +111,21 @@ for(bom of bonzinhos){
     moveElemento(bom, Math.random()*10, Math.random()*19+1)
     bom.addEventListener('mousedown', (evt)=>{clickBug(evt.target)})
 }
+
+//Contagem regressiva
+setTimeout(() => {
+    //Avisa ao usuario o fim do tempo
+    alert('Tempo Esgotado!!')
+    //Recarrega a pagina - semelhante a f5
+    location.reload(true);
+
+}, tempoRestante*1000);
+
+    const mostraTempo = setInterval(() => {
+        //mostra tempo restante
+        document.getElementById('infoTR').innerText = tempoRestante
+        document.getElementById('temporest').innerText = tempoRestante --
+    }, 1000);
 
 
 //moveElemento(document.getElementById('inv1'), 5, 5)
