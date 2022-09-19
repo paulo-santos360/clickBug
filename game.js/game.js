@@ -58,7 +58,11 @@ const moveElemento = (el, veloc, inc)=> {
             veloc = -Math.random()*450+50
             inc = Math.random()*140+10
             posicElemento(el)
+            el.classList.remove('morto')
         }
+        //Adiciona atributo velocidade para
+        //consulta do codigi js
+        el.setAttribute('velocidade', inc)
     }, 40);
 }
 
@@ -70,6 +74,24 @@ const clickBug = (el)=>{
     //Adiciona 10 pts ao score
     score += 10
     document.getElementById('score').innerText = score
+
+    //Se velocidade for maior que 20, faz 100 pontos
+    //apenas nos insertos que tenham a classe "invasor"
+    if(el.getAttribute('velocidade')>20 && el.classList.contains('invasor')){
+        score+=100
+        //mostra +100 pontos por 1/2 segundo
+        let pts100 = document.getElementById('pts100')
+        pts100.style.left = el.style.left
+        pts100.style.left = el.style.top
+       /*  const mostra100pts = setInterval(()=>{
+            pts100.style.left = '-300px'
+            //interrompe o setInterval
+            clearInterval(mostra100pts)
+        },500); */
+        const mostra100pts = setTimeout(() => {
+            pts100.style.left = '-300px'
+        },500);
+    }
 }
 
 
@@ -77,17 +99,18 @@ const clickBug = (el)=>{
 for(inv of invasores){
     posicElemento(inv)
     moveElemento(inv, Math.random()*10, Math.random()*19+1)
+    //evt.target = elemento q executa o evento - inseto clicado
     inv.addEventListener('mousedown', (evt)=>{clickBug(evt.target)})
+}
+
+for(bom of bonzinhos){
+    posicElemento(bom)
+    moveElemento(bom, Math.random()*10, Math.random()*19+1)
+    bom.addEventListener('mousedown', (evt)=>{clickBug(evt.target)})
 }
 
 
 //moveElemento(document.getElementById('inv1'), 5, 5)
 
 
-/* var n1 = prompt("Digite um numero: ")
-n1 = parseFloat(n1)
 
-var n2 = prompt("Digite um numero: ")
-n2 = parseFloat(n2)
-
-alert(n1 + n2) */
