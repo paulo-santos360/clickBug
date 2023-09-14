@@ -35,7 +35,7 @@ Mata-Mata é um jogo empolgante no qual você deve clicar nos invasores para gan
 
 ## Capturas de Tela
 
-![Tela do Jogo](
+![Tela do Jogo]
 
 ![clickbug](https://user-images.githubusercontent.com/102436341/230503281-e5d42c2d-2f08-4adc-b70d-a4565e7d3492.png)
 
