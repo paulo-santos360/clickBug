@@ -45,12 +45,4 @@ Fique à vontade para contribuir com melhorias para este projeto. Você pode abr
 
 ## Licença
 
-Este projeto é licenciado sob a [
-
-Este projeto é licenciado sob a [Licença MIT](LICENSE
-
-
-Este projeto é licenciado sob a
-
-
 Licença MIT](LICENSE). Consulte o arquivo LICENSE para obter detalhes.
